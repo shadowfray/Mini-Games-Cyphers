@@ -23,8 +23,14 @@ def main():
         except:
             print('Invalid Command')
 
+        #exit command 
+        if choice == 4:
+            print('Good bye')
+            break
+            
         filepath = input('Please input a filepath to the PDF: ')
 
+        #PDF page extractor
         if choice == 1:
             newname = input('Please input a name for the new PDF: ')
             print('Please input an integer for the page you would like to start the extract on.')
@@ -42,6 +48,7 @@ def main():
             page_extractor(filepath, newname, first, last)
             print(f'Extracted new file, {newname}.pdf, pages {first} to {last}')
 
+        #PDF splitter
         if choice == 2:
             newname1 = input('Please input a name for the first new PDF: ')
             newname2 = input('Please input a name for the second new PDF: ')
@@ -55,17 +62,13 @@ def main():
             pdf_split(filepath, page, newname1, newname2)
             print(f'Extracted new files.')
 
+        #PDF merger
         if choice == 3:
             path2 = input('Please input a path for the second PDF: ')
             newname = input('Please input a name for the new PDF: ')
 
             pdf_merge(filepath, path2, newname)
             print('Merged and created new file')
-
-
-        if choice == 4:
-            print('Good bye')
-            break
     
 def page_extractor(filepath, name='Extracted',start=0,stop=1):
     #Takes a PDF, copies pages from [start] to [stop] into a new pdf with name [name].pdf
@@ -147,4 +150,4 @@ def pdf_merger(filepath1, filepath2,name='Merged'):
     pdfFile_1.close()
     pdfFile_2.close()
 
-#pdf_split('E:\RPGs\World of Darkness\V5\Chicago_By_Night_v5.pdf',30)
+main()
